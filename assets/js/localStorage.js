@@ -13,6 +13,7 @@ let name = personName.value;
 let surname = personSurname.value;
 let newPerson;
 const newPersons = [];
+let newLi;
 
 addPerson.addEventListener('click', function(e) {
     e.preventDefault();
@@ -25,8 +26,8 @@ deletePerson.addEventListener('click', function(e) {
     e.preventDefault();
     name = personName.value;
     surname = personSurname.value;
-    deletePrint();
     deleteObject();
+    deletePrint();
 });
 
 function createObject(name, surname) {
@@ -51,7 +52,7 @@ function printPersons() {
 
     personsList.innerHTML = '';
     for (let i = 0; i < newPersons.length; i++) {
-        let newLi = document.createElement('li');
+        newLi = document.createElement('li');
         newLi.innerText = `${newPersons[i].name} ${newPersons[i].surname}`;
         personsList.appendChild(newLi);
     }
@@ -62,6 +63,7 @@ function deletePrint(){
     Surname.innerText = "";
 
     for (let i = 0; i < newPersons.length; i++) {
-        personsList.removeChild(newPersons[i].value);
+        
+        personsList.removeChild(newLi);
     }
 }
